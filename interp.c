@@ -97,31 +97,45 @@ int main(int argc, char *argv[])
 	}
      else if (strcmp(cmd, "and") == 0)
        {
-	 stack_push(stack, stack_pop(stack) & arg);
+	 int val1 = stack_pop(stack);
+	 int val2 = stack_pop(stack);
+	 stack_push(stack, val1 & val2);
        }
        else if (strcmp(cmd, "nand") == 0)
        {
-	 stack_push(stack, ~(stack_pop(stack) & arg));
+	 int val1 = stack_pop(stack);
+	 int val2 = stack_pop(stack);
+	 stack_push(stack, ~(val1 & val2));
        }
      else if (strcmp(cmd, "or") == 0)
        {
-	 stack_push(stack, stack_pop(stack) | arg);
+	 int val1 = stack_pop(stack);
+	 int val2 = stack_pop(stack);
+	 stack_push(stack, val1 | val2);
        }
      else if (strcmp(cmd, "nor") == 0)
        {
-	 stack_push(stack, ~(stack_pop(stack) | arg));
+	 int val1 = stack_pop(stack);
+	 int val2 = stack_pop(stack);
+	 stack_push(stack, ~(val1 | val2));
        }
        else if (strcmp(cmd, "xor") == 0)
        {
-	 stack_push(stack, stack_pop(stack) ^ arg);
+	 int val1 = stack_pop(stack);
+	 int val2 = stack_pop(stack);
+	 stack_push(stack, val1 ^ val2);
        }
        else if (strcmp(cmd, "ls") == 0)
        {
-	 stack_push(stack, stack_pop(stack) << arg);
+	 int value = stack_pop(stack);
+	 int shift = stack_pop(stack);
+	 stack_push(stack, value >> shift);
        }
        else if (strcmp(cmd, "rs") == 0)
        {
-	 stack_push(stack, stack_pop(stack) >> arg);
+	 int value = stack_pop(stack);
+	 int shift = stack_pop(stack);
+	 stack_push(stack, value >> shift);
        }
      else
        {
