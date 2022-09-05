@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 	{
 	  if (stack_peek(stack) == 0)
 	    {
-	      while (ins_ptr < arg)
+	      while (ins_ptr < arg-1)
 		{
 		  char c;
 		  do {
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 	}
      else if (strcmp(cmd, "jump") == 0)
 	{
-	  while (ins_ptr < arg)
+	  while (ins_ptr < arg-1)
 	    {
 	      char c;
 	      do {
