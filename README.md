@@ -18,7 +18,7 @@ Currently, I've defined everything exactly as the SO answer specifies (I think, 
 - nor: bitwise AND the top 2 values of the stack
 - xor: bitwise AND the top 2 values of the stack
 - ls: top of the stack shifted left by the second number in the stack
-- rs: Pops from the stack and then pushes top shifted right arg bits
+- rs: Pops from the stack and then pushes top shifted right by the second number in the stack
 ## Behavior
 Each command is specified in two parts, separated by a space. The command, and its argument, with the exception of pop and print.
 Each command/argument pair is separated by a newline.
