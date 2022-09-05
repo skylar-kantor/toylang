@@ -12,12 +12,12 @@ Currently, I've defined everything exactly as the SO answer specifies (I think, 
 - ifeq: jumps to the specified line if the top of the stack is 0, otherwise does nothing
 - jump: jumps to the specified line in the input file
 - print: prints the top of the stack, without removing it
-- and: Pops from the stack and then pushes top bitwise AND arg
-- nand: Pops from the stack and then pushes top bitwise NAND arg
-- or: Pops from the stack and then pushes top bitwise OR arg
-- nor: Pops from the stack and then pushes top bitwise NOR arg
-- xor: Pops from the stack and then pushes top bitwise XOR arg
-- ls: Pops from the stack and then pushes top shifted left arg bits
+- and: bitwise AND the top 2 values of the stack
+- nand: bitwise AND the top 2 values of the stack
+- or: bitwise AND the top 2 values of the stack
+- nor: bitwise AND the top 2 values of the stack
+- xor: bitwise AND the top 2 values of the stack
+- ls: top of the stack shifted left by the second number in the stack
 - rs: Pops from the stack and then pushes top shifted right arg bits
 ## Behavior
 Each command is specified in two parts, separated by a space. The command, and its argument, with the exception of pop and print.
