@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # toylang
 
 This is an interpreter for the toy language (that I suppose is similar-ish to an assembly language) defined in [this Stack Overflow answer](https://stackoverflow.com/a/6888074). I'll continue to add functionality to it as time goes on, with the goal of getting to something like [FORTH](https://en.wikipedia.org/wiki/Forth_(programming_language))
@@ -16,3 +17,6 @@ Currently, I've defined everything exactly as the SO answer specifies (I think, 
 ## Behavior
 Each command is specified in two parts, separated by a space. The command, and its argument, with the exception of pop and print.
 Each command/argument pair is separated by a newline.
+=======
+# toylang
+>>>>>>> Initial commit
