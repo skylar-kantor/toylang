@@ -48,6 +48,10 @@ int stack_peek(stack *stack)
 
 void stack_free (stack *stack)
 {
+  if (stack == NULL)
+    {
+      return;
+    }
  
   stack_node *to_free = stack->head;
   do
