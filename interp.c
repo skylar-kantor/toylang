@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
   //Open the input and output files, so we have them ready
   if (argc < 2)
     {
-      printf("Usage: interp <in_file>\n");
+      fprintf(stderr, "Usage: interp <in_file>\n");
       return 64;
     }
   FILE *in_file = fopen(argv[1], "r");
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
   stack *stack = stack_init();
   if (in_file == NULL)
     {
-      printf("Couldn't open input file\n");
+      fprintf(stderr, "Couldn't open input file\n");
       return 2;
     }
   //Go through all commands and execute them one by one
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
 	    }
 	  else
 	    {
-	      printf("Tried to add with fewer than two nodes in a stack");
+	      fprintf(stderr, "Tried to add with fewer than two nodes in a stack");
 	      exit(1);
 	    }
 	}
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 	{
 	  if (stack_peek(stack) == 0)
 	    {
-	      while (ins_ptr < arg-1)
+	      while (ins_ptr < arg - 1)
 		{
 		  char c;
 		  do {
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
 	}
      else if (strcmp(cmd, "jump") == 0)
 	{
-	  while (ins_ptr < arg-1)
+	  while (ins_ptr < arg - 1)
 	    {
 	      char c;
 	      do {
@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
        }
      else
        {
-	 printf("Unrecognized command \"%s\"\n", cmd);
+	 fprintf(stderr, "Unrecognized command \"%s\"\n", cmd);
 	 return 1;
        }
       ins_ptr++;
