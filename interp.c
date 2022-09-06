@@ -50,9 +50,9 @@ int main(int argc, char *argv[])
 	{
 	  if (stack -> head != NULL && stack->head->next != NULL)
 	    {
-	    int a = stack_pop(stack);
-	    int b = stack_pop(stack);
-	    stack_push(stack, a+b);
+	      int a = stack_pop(stack);
+	      int b = stack_pop(stack);
+	      stack_push(stack, a+b);
 	    }
 	  else
 	    {
@@ -67,7 +67,8 @@ int main(int argc, char *argv[])
 	      while (ins_ptr < arg - 1)
 		{
 		  char c;
-		  do {
+		  do
+		    {
 		    c = fgetc(in_file);
 		  } while (c != '\n');
 		  ins_ptr++;
@@ -75,73 +76,74 @@ int main(int argc, char *argv[])
 		}
 	    }
 	}
-     else if (strcmp(cmd, "jump") == 0)
+      else if (strcmp(cmd, "jump") == 0)
 	{
 	  while (ins_ptr < arg - 1)
 	    {
 	      char c;
-	      do {
+	      do
+		{
 		c = fgetc(in_file);
 	      } while (c != '\n');
 	      ins_ptr++;
 		  
 	    }
 	}
-     else if (strcmp(cmd, "print") == 0)
+      else if (strcmp(cmd, "print") == 0)
 	{
 	  printf("%d\n", stack_peek(stack));
 	}
-     else if (strcmp(cmd, "dup") == 0)
+      else if (strcmp(cmd, "dup") == 0)
 	{
 	  stack_push(stack, stack_peek(stack));
 	}
-     else if (strcmp(cmd, "and") == 0)
-       {
-	 int val1 = stack_pop(stack);
-	 int val2 = stack_pop(stack);
-	 stack_push(stack, val1 & val2);
-       }
-       else if (strcmp(cmd, "nand") == 0)
-       {
-	 int val1 = stack_pop(stack);
-	 int val2 = stack_pop(stack);
-	 stack_push(stack, ~(val1 & val2));
-       }
-     else if (strcmp(cmd, "or") == 0)
-       {
-	 int val1 = stack_pop(stack);
-	 int val2 = stack_pop(stack);
-	 stack_push(stack, val1 | val2);
-       }
-     else if (strcmp(cmd, "nor") == 0)
-       {
-	 int val1 = stack_pop(stack);
-	 int val2 = stack_pop(stack);
-	 stack_push(stack, ~(val1 | val2));
-       }
-       else if (strcmp(cmd, "xor") == 0)
-       {
-	 int val1 = stack_pop(stack);
-	 int val2 = stack_pop(stack);
-	 stack_push(stack, val1 ^ val2);
-       }
-       else if (strcmp(cmd, "ls") == 0)
-       {
-	 int value = stack_pop(stack);
-	 int shift = stack_pop(stack);
-	 stack_push(stack, value >> shift);
-       }
-       else if (strcmp(cmd, "rs") == 0)
-       {
-	 int value = stack_pop(stack);
-	 int shift = stack_pop(stack);
-	 stack_push(stack, value >> shift);
-       }
-     else
-       {
-	 fprintf(stderr, "Unrecognized command \"%s\"\n", cmd);
-	 return 1;
-       }
+      else if (strcmp(cmd, "and") == 0)
+	{
+	  int val1 = stack_pop(stack);
+	  int val2 = stack_pop(stack);
+	  stack_push(stack, val1 & val2);
+	}
+      else if (strcmp(cmd, "nand") == 0)
+	{
+	  int val1 = stack_pop(stack);
+	  int val2 = stack_pop(stack);
+	  stack_push(stack, ~(val1 & val2));
+	}
+      else if (strcmp(cmd, "or") == 0)
+	{
+	  int val1 = stack_pop(stack);
+	  int val2 = stack_pop(stack);
+	  stack_push(stack, val1 | val2);
+	}
+      else if (strcmp(cmd, "nor") == 0)
+	{
+	  int val1 = stack_pop(stack);
+	  int val2 = stack_pop(stack);
+	  stack_push(stack, ~(val1 | val2));
+	}
+      else if (strcmp(cmd, "xor") == 0)
+	{
+	  int val1 = stack_pop(stack);
+	  int val2 = stack_pop(stack);
+	  stack_push(stack, val1 ^ val2);
+	}
+      else if (strcmp(cmd, "ls") == 0)
+	{
+	  int value = stack_pop(stack);
+	  int shift = stack_pop(stack);
+	  stack_push(stack, value >> shift);
+	}
+      else if (strcmp(cmd, "rs") == 0)
+	{
+	  int value = stack_pop(stack);
+	  int shift = stack_pop(stack);
+	  stack_push(stack, value >> shift);
+	}
+      else
+	{
+	  fprintf(stderr, "Unrecognized command \"%s\"\n", cmd);
+	  return 1;
+	}
       ins_ptr++;
     } while (scan != EOF);
 
