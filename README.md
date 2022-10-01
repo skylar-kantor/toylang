@@ -22,3 +22,7 @@ Currently, I've defined everything exactly as the SO answer specifies (I think, 
 ## Behavior
 Each command is specified in two parts, separated by a space. The command, and its argument, with the exception of pop and print.
 Each command/argument pair is separated by a newline.
+
+## To Do
+- Jump and ifeq should probably be able to go backwards
+- add an "if" word that pushes 1 to the stack if top == arg and 0 otherwise
