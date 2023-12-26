@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<stdint.h>
-#include "stack.h"
+#include "exec.h"
 
 void add(stack *stack)
 {
