@@ -47,7 +47,7 @@ void dup(stack *stack)
 
 void stack_print(stack *stack)
 {
-  print(stack_peek(stack));
+  printf("%d\n", stack_peek(stack));
 }
 
 void execute_command(int command, int argument, stack *stack)
