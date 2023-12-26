@@ -1,24 +1,25 @@
 #include "parse.h"
 
-instruction scan_file(FILE *in_file)
+int scan_file(FILE *in_file,  instruction *out_instr)
 {
-  instruction instr;
+  instruction read_instruction;
   char cmd[7];
   int arg;
-  int scan = fscanf(in_file, "%6s %d", cmd, &arg);
-  if (scan == 1)
+  int scan_matches = fscanf(in_file, "%6s %d", cmd, &arg);
+  if (scan_matches == 1)
   {
     arg = -1;
   }
-  if (scan < 1)
+  if (scan_matches < 1)
   {
     instruction error_instruction = {.command = -1, .arg = -1};
-    return error_instruction;
+    *out_instr = error_instruction;
   }
 
-  arg = instr.arg;
-  strcpy(instr.command, cmd);
-  return instr;
+  arg = read_instruction.arg;
+  strcpy(read_instruction.command, cmd);
+  *out_instr = read_instruction;
+  return scan_matches;
 }
 
 int parse_command(char *cmd)
