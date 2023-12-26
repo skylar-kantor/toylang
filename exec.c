@@ -50,25 +50,19 @@ void stack_print(stack *stack)
   printf("%d\n", stack_peek(stack));
 }
 
-void jump(int jump_location, int current_instruction_pointer) {
-  /*
-  if (ins_ptr < jump_location) {
-    read and discard lines of file until we're where we want to be
-  } else {
-    set ins_ptr back to zero
-    read and discard lines of file until we're where we want to be
-  }
-  */
+void jump(stack *stack, FILE *input_file) {
+  int jump_location = stack_pop(stack) * 4;
+  fseek(input_file, jump_location, SEEK_SET);
 }
 
-void ifeq(stack *stack, int jump_location, int current_instruction_pointer) {
+void ifeq(stack *stack, FILE *input_file) {
   
   if (stack_pop(stack) == stack_pop(stack)) {
-    jump(jump_location, current_instruction_pointer);
+    jump(stack, input_file);
   }
 }
 
-void execute_command(int command, int argument, stack *stack, int instruction_pointer)
+void execute_command(int command, int argument, stack *stack, int instruction_pointer, FILE *input_file)
 {
 
   switch (command)
@@ -83,10 +77,10 @@ void execute_command(int command, int argument, stack *stack, int instruction_po
     add(stack);
     break;
   case 3:
-    ifeq(stack, argument, instruction_pointer);
+    ifeq(stack, input_file);
     break;
   case 4:
-    jump(argument, instruction_pointer);
+    jump(stack, input_file);
     break;
   case 5:
     stack_print(stack);
