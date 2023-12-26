@@ -26,7 +26,8 @@ int main(int argc, char *argv[])
     instruction *read_instruction;
     scan_matches = scan_file(input_file, read_instruction);
     int command = parse_command(read_instruction->command);
-    execute_command(command, argument, stack);
+    execute_command(command, argument, stack, instruction_pointer);
+    instruction_pointer++;
   } while (scan_matches != EOF);
 
   // We're done with the input file, so close it ASAP
