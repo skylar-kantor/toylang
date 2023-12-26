@@ -50,6 +50,24 @@ void stack_print(stack *stack)
   printf("%d\n", stack_peek(stack));
 }
 
+void jump(int jump_location) {
+  /*
+  if (ins_ptr < jump_location) {
+    read and discard lines of file until we're where we want to be
+  } else {
+    set ins_ptr back to zero
+    read and discard lines of file until we're where we want to be
+  }
+  */
+}
+
+void ifeq(stack *stack, int jump_location) {
+  
+  if (stack_pop(stack) == stack_pop(stack)) {
+    //jump(jump_location)
+  }
+}
+
 void execute_command(int command, int argument, stack *stack)
 {
 
