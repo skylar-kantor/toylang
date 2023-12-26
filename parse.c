@@ -4,9 +4,9 @@
 
 
 //Scan the line, and get the command and argument
-struct instruction scan_file(FILE *in_file)
+instruction scan_file(FILE *in_file)
 {
-  struct instruction instr;
+  instruction instr;
   char cmd[7];
   int arg;
   int scan = fscanf(in_file, "%6s %d", cmd, &arg);

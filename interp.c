@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
   //Go through all commands and execute them one by one
   do
     {
-      struct instruction instr = scan_file(in_file);
+      instruction instr = scan_file(in_file);
       int opcode[2] = {parse(instr), instr.arg};
     } while (scan != EOF);
 
