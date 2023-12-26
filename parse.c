@@ -1,5 +1,6 @@
 #include "parse.h"
 
+
 instruction scan_file(FILE *in_file)
 {
   instruction instr;

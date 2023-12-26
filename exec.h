@@ -10,3 +10,4 @@ void nand(stack * stack);
 void nor(stack * stack);
 void dup(stack * stack);
 void stack_print(stack * stack);
+void execute_command(int command, int argument, stack *stack);
