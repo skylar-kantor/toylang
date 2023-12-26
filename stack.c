@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "stack.h"
 
 stack *stack_init()
@@ -14,7 +12,7 @@ stack_node *stack_push(stack *stack, int val)
   if (stack == NULL)
     {
       fprintf(stderr, "Tried to push to stack that doesn't exist\n");
-      return 1;
+      return NULL;
     }
 
   //create the new node

@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-#include <stdlib.h>
+
 #include "stack.h"
 #include "parse.h"
 
@@ -28,7 +26,8 @@ int main(int argc, char *argv[])
   do
     {
       instruction instr = scan_file(in_file);
-      int opcode[2] = {parse(instr), instr.arg};
+      int cmd = parse_command(instr.command);
+      int opcode[2] = {cmd, instr.arg};
     } while (scan != EOF);
 
   //We're done with the input file, so close it ASAP

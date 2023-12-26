@@ -1,9 +1,5 @@
-#include <stdio.h>
 #include "parse.h"
-//The command and argument
 
-
-//Scan the line, and get the command and argument
 instruction scan_file(FILE *in_file)
 {
   instruction instr;
@@ -26,7 +22,7 @@ instruction scan_file(FILE *in_file)
 
 
 
-int parse(int cmd)
+int parse_command(char *cmd)
 {
   //determine the command
   if (strcmp(cmd, "push") == 0)

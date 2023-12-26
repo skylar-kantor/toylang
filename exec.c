@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include<stdint.h>
 #include "exec.h"
-
 void add(stack *stack)
 {
   stack_push(stack, stack_pop(stack) + stack_pop(stack));
