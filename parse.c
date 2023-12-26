@@ -12,7 +12,8 @@ instruction scan_file(FILE *in_file)
   }
   if (scan < 1)
   {
-    return instr;
+    instruction error_instruction = {.command = -1, .arg = -1};
+    return error_instruction;
   }
 
   arg = instr.arg;
