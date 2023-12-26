@@ -36,13 +36,13 @@ void rs(stack *stack)
 void nand(stack *stack)
 {
   and(stack);
-  stack_push(~stack_pop(stack));
+  stack_push(stack, ~stack_pop(stack));
 }
 
 void nor(stack *stack)
 {
   or(stack);
-  stack_push(~stack_pop(stack));
+  stack_push(stack, ~stack_pop(stack));
 }
 
 void dup(stack *stack)
