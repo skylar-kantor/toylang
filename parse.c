@@ -1,96 +1,94 @@
+#include <stdio.h>
+#include "parse.h"
 //The command and argument
-struct instruction
-{
-  char command[6];
-  int arg;
-} instruction;
+
 
 //Scan the line, and get the command and argument
-struct instruction scanfile(FILE *in_file)
+struct instruction scan_file(FILE *in_file)
 {
   struct instruction instr;
   char cmd[7];
   int arg;
-  scan = fscanf(in_file, "%6s %d", cmd, &arg);
+  int scan = fscanf(in_file, "%6s %d", cmd, &arg);
   if (scan == 1)
     {
       arg = -1;
     }
   if (scan < 1)
     {
-      break;
+      return instr;
     }
 
-  instr.arg = arg;
-  strcpy(instr.cmd, cmd);
+  arg = instr.arg;
+  strcpy(instr.command, cmd);
   return instr;
 } 
 
 
 
-int[2] parse(struct instruction instr)
+int parse(int cmd)
 {
   //determine the command
-  if (strcmp(instr.cmd, "push") == 0)
+  if (strcmp(cmd, "push") == 0)
     {
-      return {0,instr.arg};
+      return 0;
     }
-  else if (strcmp(instr.cmd, "pop") == 0)
+  else if (strcmp(cmd, "pop") == 0)
     {
-       return {1,instr.arg};
+       return 1;
     }
-  else if (strcmp(instr.cmd, "add") == 0)
+  else if (strcmp(cmd, "add") == 0)
     {
-       return {2,instr.arg};
+       return 2;
     }
-  else if (strcmp(instr.cmd, "ifeq") == 0)
+  else if (strcmp(cmd, "ifeq") == 0)
     {
-       return {3,instr.arg};
+       return 3;
     }
-  else if (strcmp(instr.cmd, "jump") == 0)
+  else if (strcmp(cmd, "jump") == 0)
     {
-      return {4,instr.arg};
+      return 4;
     }
-  else if (strcmp(instr.cmd, "print") == 0)
+  else if (strcmp(cmd, "print") == 0)
     {
-       return {5,instr.arg};
+       return 5;
     }
-  else if (strcmp(instr.cmd, "dup") == 0)
+  else if (strcmp(cmd, "dup") == 0)
     {
-       return {6,instr.arg};
+       return 6;
     }
-  else if (strcmp(instr.cmd, "and") == 0)
+  else if (strcmp(cmd, "and") == 0)
     {
-      return {7,instr.arg};
+      return 7;
     }
-  else if (strcmp(instr.cmd, "nand") == 0)
+  else if (strcmp(cmd, "nand") == 0)
     {
-       return {8,instr.arg};
+       return 8;
     }
-  else if (strcmp(instr.cmd, "or") == 0)
+  else if (strcmp(cmd, "or") == 0)
     {
-      return({9,instr.arg};
+     return 9;
     }
-  else if (strcmp(instr.cmd, "nor") == 0)
+  else if (strcmp(cmd, "nor") == 0)
     {
-      return {10, instr.arg};
+      return 10;
     }
-  else if (strcmp(instr.cmd, "xor") == 0)
+  else if (strcmp(cmd, "xor") == 0)
     {
-       return {11,instr.arg};
+       return 11;
     }
-  else if (strcmp(instr.cmd, "ls") == 0)
+  else if (strcmp(cmd, "ls") == 0)
     {
-       return {12,instr.arg};
+       return 12;
     }
-  else if (strcmp(instr.cmd, "rs") == 0)
+  else if (strcmp(cmd, "rs") == 0)
     {
-      return {13,instr.arg};
+      return 13;
     }
   else
     {
-      fprintf(stderr, "ERROR: \"%s\", ", instr.cmd);
-      return {-1, -1}
+      fprintf(stderr, "ERROR: \"%s\", ", cmd);
+      return -1;
     }
 }
 
