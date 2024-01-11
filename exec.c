@@ -62,7 +62,7 @@ void ifeq(stack *stack, FILE *input_file) {
   }
 }
 
-void execute_command(int command, int argument, stack *stack, int instruction_pointer, FILE *input_file)
+void execute_command(int command, int argument, stack *stack, FILE *input_file)
 {
 
   switch (command)

@@ -8,16 +8,19 @@ int scan_file(FILE *in_file,  instruction *out_instr)
   int scan_matches = fscanf(in_file, "%6s %d", cmd, &arg);
   if (scan_matches == 1)
   {
-    arg = -1;
+    read_instruction.arg = -1;
   }
   if (scan_matches < 1)
   {
     instruction error_instruction = {.command = -1, .arg = -1};
     *out_instr = error_instruction;
+    //return 0;
   }
+ // printf("FOUND %d MATCHES\n", scan_matches);
 
-  arg = read_instruction.arg;
+  read_instruction.arg = arg;
   strcpy(read_instruction.command, cmd);
+ // printf("COPYING\n");
   *out_instr = read_instruction;
   return scan_matches;
 }

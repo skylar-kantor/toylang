@@ -10,25 +10,31 @@ int main(int argc, char *argv[])
     return 64;
   }
   FILE *input_file = fopen(argv[1], "r");
-  char command[6];
-  int argument;
-  int scan_matches;
-  int instruction_pointer = 0;
-  stack *stack = stack_init();
   if (input_file == NULL)
   {
     fprintf(stderr, "Couldn't open input file\n");
     return 2;
   }
-  // Go through all commands and execute them one by one
-  do
+  int scan_matches = 0;
+  int instruction_pointer = 0;
+  stack *stack = stack_init();
+   while (1)
   {
-    instruction *read_instruction;
+    instruction *read_instruction = malloc(sizeof(instruction));
+  //  printf("READ\n");
     scan_matches = scan_file(input_file, read_instruction);
+   if(scan_matches == EOF)
+   {
+    break;
+   }
+   // printf("PARSE\n");
     int command = parse_command(read_instruction->command);
-    execute_command(command, argument, stack, instruction_pointer, input_file);
+   // printf("EXEC\n");
+    int argument = read_instruction->arg;
+    //TODO make this argument a context struct?
+    execute_command(command, argument, stack, input_file);
     instruction_pointer++;
-  } while (scan_matches != EOF);
+  }
 
   // We're done with the input file, so close it ASAP
   fclose(input_file);
