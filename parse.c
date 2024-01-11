@@ -28,7 +28,7 @@ int scan_file(FILE *in_file, instruction *out_instr)
 int parse_command(char *cmd)
 {
   // determine the command
-  if (strcmp(cmd, "psh") == 0)
+  if (strcmp(cmd, "push") == 0)
   {
     return 0;
   }
@@ -40,15 +40,15 @@ int parse_command(char *cmd)
   {
     return 2;
   }
-  else if (strcmp(cmd, "ifq") == 0)
+  else if (strcmp(cmd, "ifeq") == 0)
   {
     return 3;
   }
-  else if (strcmp(cmd, "jmp") == 0)
+  else if (strcmp(cmd, "jump") == 0)
   {
     return 4;
   }
-  else if (strcmp(cmd, "prt") == 0)
+  else if (strcmp(cmd, "print") == 0)
   {
     return 5;
   }
@@ -60,11 +60,11 @@ int parse_command(char *cmd)
   {
     return 7;
   }
-  else if (strcmp(cmd, "nnd") == 0)
+  else if (strcmp(cmd, "nand") == 0)
   {
     return 8;
   }
-  else if (strcmp(cmd, "_or") == 0)
+  else if (strcmp(cmd, "or") == 0)
   {
     return 9;
   }
@@ -76,11 +76,11 @@ int parse_command(char *cmd)
   {
     return 11;
   }
-  else if (strcmp(cmd, "lfs") == 0)
+  else if (strcmp(cmd, "ls") == 0)
   {
     return 12;
   }
-  else if (strcmp(cmd, "rts") == 0)
+  else if (strcmp(cmd, "rs") == 0)
   {
     return 13;
   }
