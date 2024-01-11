@@ -7,22 +7,22 @@ Currently, I've defined everything exactly as the SO answer specifies (I think, 
 
 ## Words/Commands 
 - push: Pushes the argument given to the stack
-- pop: pops... the top value off the stack
-- add: adds the top two values of the stack
-- ifeq: jumps to the specified line if the top of the stack is 0, otherwise does nothing
-- jump: jumps to the specified line in the input file
-- print: prints the top of the stack, without removing it
-- and: bitwise AND the top 2 values of the stack
-- nand: bitwise AND the top 2 values of the stack
-- or: bitwise AND the top 2 values of the stack
-- nor: bitwise AND the top 2 values of the stack
-- xor: bitwise AND the top 2 values of the stack
-- ls: top of the stack shifted left by the second number in the stack
-- rs: Pops from the stack and then pushes top shifted right by the second number in the stack
+- pop: Pops the top value off the stack
+- add: Adds the top two values of the stack
+- ifeq: Jumps to the specified line if the top of the stack is 0, otherwise does nothing
+- jump: Jumps to the specified line in the input file
+- print: Prints the top of the stack to STDOUT, without removing it
+- and: Bitwise AND the top 2 values of the stack
+- nand: Bitwise NAND the top 2 values of the stack
+- or: Bitwise OR the top 2 values of the stack
+- nor: Bitwise NOR the top 2 values of the stack
+- xor: Bitwise XOR the top 2 values of the stack
+- ls: Top of the stack shifted left by the second number in the stack
+- rs: Top of the stack shifted right by the second number in the stack
 ## Behavior
 Each command is specified in two parts, separated by a space. The command, and its argument, with the exception of pop and print.
 Each command/argument pair is separated by a newline.
 
 ## To Do
-- Jump and ifeq should probably be able to go backwards
+- ~~Jump and ifeq should probably be able to go backwards~~ (Done 1/10/2024)
 - add an "if" word that pushes 1 to the stack if top == arg and 0 otherwise
