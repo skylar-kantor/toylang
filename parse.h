@@ -6,5 +6,5 @@ typedef struct instruction
   int arg;
 } instruction;
 
-int scan_file(FILE *in_file,  instruction *out_instr);
+int scan_file(FILE *in_file, instruction *out_instr);
 int parse_command(char *cmd);

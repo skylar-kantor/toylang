@@ -1,6 +1,6 @@
 #include "parse.h"
 
-int scan_file(FILE *in_file,  instruction *out_instr)
+int scan_file(FILE *in_file, instruction *out_instr)
 {
   instruction read_instruction;
   char cmd[7];
@@ -14,13 +14,13 @@ int scan_file(FILE *in_file,  instruction *out_instr)
   {
     instruction error_instruction = {.command = -1, .arg = -1};
     *out_instr = error_instruction;
-    //return 0;
+    // return 0;
   }
- // printf("FOUND %d MATCHES\n", scan_matches);
+  // printf("FOUND %d MATCHES\n", scan_matches);
 
   read_instruction.arg = arg;
   strcpy(read_instruction.command, cmd);
- // printf("COPYING\n");
+  // printf("COPYING\n");
   *out_instr = read_instruction;
   return scan_matches;
 }

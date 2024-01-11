@@ -50,23 +50,23 @@ void stack_print(stack *stack)
   printf("%d\n", stack_peek(stack));
 }
 
-void jump(stack *stack, FILE *input_file) {
+void jump(stack *stack, FILE *input_file)
+{
   int current_instruction = 0;
   int jump_location = stack_pop(stack);
-   fseek(input_file, SEEK_SET, SEEK_SET);
+  fseek(input_file, SEEK_SET, SEEK_SET);
   while (current_instruction != jump_location)
   {
     fscanf(input_file, "%*[^\n]\n");
     current_instruction++;
   }
- 
-
-
 }
 
-void ifeq(stack *stack, FILE *input_file) {
-  
-  if (stack_pop(stack) == stack_pop(stack)) {
+void ifeq(stack *stack, FILE *input_file)
+{
+
+  if (stack_pop(stack) == stack_pop(stack))
+  {
     jump(stack, input_file);
   }
 }

@@ -18,20 +18,20 @@ int main(int argc, char *argv[])
   int scan_matches = 0;
   int instruction_pointer = 0;
   stack *stack = stack_init();
-   while (1)
+  while (1)
   {
     instruction *read_instruction = malloc(sizeof(instruction));
-  //  printf("READ\n");
+    //  printf("READ\n");
     scan_matches = scan_file(input_file, read_instruction);
-   if(scan_matches == EOF)
-   {
-    break;
-   }
-   // printf("PARSE\n");
+    if (scan_matches == EOF)
+    {
+      break;
+    }
+    // printf("PARSE\n");
     int command = parse_command(read_instruction->command);
-   // printf("EXEC\n");
+    // printf("EXEC\n");
     int argument = read_instruction->arg;
-    //TODO make this argument a context struct?
+    // TODO make this argument a context struct?
     execute_command(command, argument, stack, input_file);
     instruction_pointer++;
   }

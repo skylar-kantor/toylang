@@ -2,9 +2,9 @@
 #include <stdio.h>
 
 void add(stack *stack);
-void and (stack *stack);
-void or (stack *stack);
-void xor (stack *stack);
+void and (stack * stack);
+void or (stack * stack);
+void xor (stack * stack);
 void ls(stack *stack);
 void rs(stack *stack);
 void nand(stack *stack);
