@@ -3,7 +3,6 @@
 
 int main(int argc, char *argv[])
 {
-  // Open the input and output files, so we have them ready
   if (argc < 2)
   {
     fprintf(stderr, "Usage: interp <in_file>\n");
@@ -21,25 +20,18 @@ int main(int argc, char *argv[])
   while (1)
   {
     instruction *read_instruction = malloc(sizeof(instruction));
-    //  printf("READ\n");
     scan_matches = scan_file(input_file, read_instruction);
     if (scan_matches == EOF)
     {
       break;
     }
-    // printf("PARSE\n");
     int command = parse_command(read_instruction->command);
-    // printf("EXEC\n");
     int argument = read_instruction->arg;
     // TODO make this argument a context struct?
     execute_command(command, argument, stack, input_file);
     instruction_pointer++;
   }
-
-  // We're done with the input file, so close it ASAP
   fclose(input_file);
-
-  // Read out the stack value at the end of the program
   printf("=========FINAL STACK VALUE==============\n");
   stack_node *head = stack->head;
   while (head != NULL)

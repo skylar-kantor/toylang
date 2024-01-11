@@ -14,20 +14,15 @@ int scan_file(FILE *in_file, instruction *out_instr)
   {
     instruction error_instruction = {.command = -1, .arg = -1};
     *out_instr = error_instruction;
-    // return 0;
   }
-  // printf("FOUND %d MATCHES\n", scan_matches);
-
   read_instruction.arg = arg;
   strcpy(read_instruction.command, cmd);
-  // printf("COPYING\n");
   *out_instr = read_instruction;
   return scan_matches;
 }
 
 int parse_command(char *cmd)
 {
-  // determine the command
   if (strcmp(cmd, "push") == 0)
   {
     return 0;
