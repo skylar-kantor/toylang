@@ -51,8 +51,17 @@ void stack_print(stack *stack)
 }
 
 void jump(stack *stack, FILE *input_file) {
-  int jump_location = stack_pop(stack) * 4;
-  fseek(input_file, jump_location, SEEK_SET);
+  int current_instruction = 0;
+  int jump_location = stack_pop(stack);
+   fseek(input_file, SEEK_SET, SEEK_SET);
+  while (current_instruction != jump_location)
+  {
+    fscanf(input_file, "%*[^\n]\n");
+    current_instruction++;
+  }
+ 
+
+
 }
 
 void ifeq(stack *stack, FILE *input_file) {
