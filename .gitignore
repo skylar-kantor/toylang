@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+include2dot.pl
+source.dot
+source.ps
+.vscode/launch.json
+.vscode/tasks.json
+test
