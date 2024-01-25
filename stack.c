@@ -2,7 +2,7 @@
 
 stack *stack_init(void)
 {
-  struct stack *stack = calloc(1, sizeof(struct stack));
+  stack *stack = calloc(1, sizeof(stack));
   stack->head = NULL;
   return stack;
 }
@@ -16,7 +16,7 @@ stack_node *stack_push(stack *stack, int val)
   }
 
   // create the new node
-  struct stack_node *new_node = calloc(1, sizeof(stack_node));
+  stack_node *new_node = calloc(1, sizeof(stack_node));
   // set the previous top of the stack to be the next node of the new top
   new_node->next = stack->head;
   new_node->value = val;
