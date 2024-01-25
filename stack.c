@@ -1,8 +1,8 @@
 #include "stack.h"
 
-stack *stack_init()
+stack *stack_init(void)
 {
-  struct stack *stack = calloc(1, sizeof(stack));
+  struct stack *stack = calloc(1, sizeof(struct stack));
   stack->head = NULL;
   return stack;
 }
