@@ -1,10 +1,10 @@
 #include "stack.h"
-
+#include <stdlib.h>
 stack *stack_init()
 {
-  struct stack *stack = calloc(1, sizeof(stack));
-  stack->head = NULL;
-  return stack;
+   struct stack *st = malloc(sizeof(*st));
+  st->head = NULL;
+  return st;
 }
 
 stack_node *stack_push(stack *stack, int val)
