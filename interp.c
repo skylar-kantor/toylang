@@ -1,6 +1,6 @@
 #include "parse.h"
 #include "exec.h"
-
+#include <stdlib.h>
 int main(int argc, char *argv[])
 {
   if (argc < 2)
@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   stack *stack = stack_init();
   while (1)
   {
-    instruction *read_instruction = malloc(sizeof(instruction));
+    instruction *read_instruction = malloc(sizeof(*read_instruction));
     scan_matches = scan_file(input_file, read_instruction);
     if (scan_matches == EOF)
     {
