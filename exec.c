@@ -71,6 +71,74 @@ void ifeq(stack *stack, FILE *input_file)
   }
 }
 
+void t_if(stack *stack)
+{
+ int operand = stack_pop(stack);
+ int v1 = stack_pop(stack);
+ int v2 = stack_pop(stack);
+
+ switch (operand)
+ {
+ case 0:
+  if(v1 == v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+  case 1:
+  if(v1 < v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+   case 2:
+  if(v1 > v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+   case 3:
+  if(v1 <= v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+   case 4:
+  if(v1 >= v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+ 
+ default:
+  break;
+ }
+}
+
 void execute_command(int command, int argument, stack *stack, FILE *input_file)
 {
 
@@ -117,6 +185,9 @@ void execute_command(int command, int argument, stack *stack, FILE *input_file)
     break;
   case 13:
     rs(stack);
+    break;
+  case 14:
+    t_if(stack);
     break;
   default:
     break;
