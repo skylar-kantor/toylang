@@ -79,6 +79,10 @@ int parse_command(char *cmd)
   {
     return 13;
   }
+  else if (strcmp(cmd, "if") == 0)
+  {
+    return 14;
+  }
   else
   {
     fprintf(stderr, "ERROR: \"%s\", ", cmd);
