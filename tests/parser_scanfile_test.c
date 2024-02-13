@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    printf("======\n======\nTesting scan_file()\n======\n======\n");
+    printf("==================\n==================\nTesting scan_file()\n==================\n==================\n");
     // Test that a single, valid instruction in a file returns a correct result
 
     // Commands without argument should return 1, set the argument of instruction to -1, and store the text before the single space in instruction->command
@@ -57,10 +57,10 @@ int main(void)
         return 0;
     }
     free(result);
-     printf("Passed single_good_arg\n");
+    printf("Passed single_good_arg\n");
 
     // Empty file should return -1
-     printf("Testing empty_file\n");
+    printf("Testing empty_file\n");
     FILE *empty = fopen("scanfile_empty_file", "r");
     result = malloc(sizeof(instruction));
     matches = scan_file(empty, result);
@@ -120,8 +120,6 @@ int main(void)
             return 0;
         }
 
-        
-
         count++;
     }
     free(result);
@@ -145,13 +143,13 @@ int main(void)
         return 0;
     }
     free(result);
-     printf("Passed correct_form_no_cmd_noarg\n");
+    printf("Passed correct_form_no_cmd_noarg\n");
 
     // Test that a single instruction in an incorrect format returns an error
 
     // Command too long (more than 6 chars)
-    //This should truncate the command, but otherwise act as though nothing is wrong
-     printf("Testing cmd_too_long\n");
+    // This should truncate the command, but otherwise act as though nothing is wrong
+    printf("Testing cmd_too_long\n");
     FILE *cmd_too_long = fopen("scanfile_cmd_too_long", "r");
     result = calloc(1, sizeof(instruction));
     matches = scan_file(cmd_too_long, result);
@@ -170,7 +168,7 @@ int main(void)
     }
     if (strcmp(result->command, "aaaaad") != 0)
     {
-         printf("scan_file() test: Failed command too long. Command should have truncated to \"aaaaad\", instead is %s\n", result->command);
+        printf("scan_file() test: Failed command too long. Command should have truncated to \"aaaaad\", instead is %s\n", result->command);
         free(result);
         return 0;
     }
@@ -198,7 +196,7 @@ int main(void)
     printf("Passed cmd_too_short\n");
 
     // Too much whitespace
-    // Since fscanf ignores multiple whitespace characters, this shouldn't be different from a correctly formatted command 
+    // Since fscanf ignores multiple whitespace characters, this shouldn't be different from a correctly formatted command
     printf("Testing too_much_whitespace\n");
     FILE *too_much_space = fopen("scanfile_too_much_whitespace", "r");
     result = calloc(1, sizeof(instruction));
@@ -259,5 +257,5 @@ int main(void)
     }
     free(result);
     printf("Passed too_many_args\n");
-      printf("======\n======\nPassed scan_file()\n======\n======\n");
+    printf("==================\n==================\nPassed scan_file()\n==================\n==================\n");
 }

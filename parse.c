@@ -1,5 +1,5 @@
 #include "parse.h"
-
+#define TEST 10
 int scan_file(FILE *in_file, instruction *out_instr)
 {
   instruction read_instruction;
@@ -90,7 +90,9 @@ int parse_command(char *cmd)
   }
   else
   {
+    #ifndef TEST
     fprintf(stderr, "ERROR: \"%s\", ", cmd);
+    #endif
     return -1;
   }
 }
