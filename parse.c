@@ -16,11 +16,11 @@ int scan_file(FILE *in_file, instruction *out_instr)
   }
   if (scan_matches < 1)
   {
+
     instruction error_instruction;
     strcpy(error_instruction.command, "-1");
     error_instruction.arg = -1;
     *out_instr = error_instruction;
-    //printf("%s, %d\n", error_instruction.command, error_instruction.arg);
     return scan_matches;
   }
 

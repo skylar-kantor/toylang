@@ -93,7 +93,7 @@ int main(void)
                 break;
             }
         }
-        
+
         if (matches != 1 && matches != -1)
         {
             printf("scan_file() test: Failed multi command with no argument on loop %d.\nscan_file returned %d, should have returned 1\n", count, matches);
@@ -120,9 +120,9 @@ int main(void)
     free(result);
 
     // Test that a single instruction, that is in the correct form, but not a valid instruction still returns a command
-    FILE *correct_form_no_cmd = fopen("scanfile_correct_format_no_cmd", "r");
+    FILE *correct_form_no_cmd = fopen("scanfile_correct_form_no_cmd", "r");
     result = calloc(1, sizeof(instruction));
-    matches = scan_file(single_good_noarg, result);
+    matches = scan_file(correct_form_no_cmd, result);
     if (matches != 1)
     {
         printf("scan_file() test: Failed no command, correct format with no arguments.\nscan_file returned %d, should have returned 1\n", matches);
