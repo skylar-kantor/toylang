@@ -3,8 +3,21 @@
 stack *stack_init(void)
 {
   stack *stack = calloc(1, sizeof(stack));
-  stack->head = NULL;
+ 
   return stack;
+}
+
+stack *stack_increase(stack *stack) {
+  stack_node *nodes[(stack->capacity) * 2];
+ 
+  struct stack *new_stack = calloc(1, sizeof(stack));
+  new_stack->capacity = stack->capacity * 2;
+   for (int i  = 0; i < stack->capacity; i++)
+  {
+    new_stack->head[i] = stack->head[i];
+  }
+  new_stack->top = 0;
+  return new_stack;
 }
 
 stack_node *stack_push(stack *stack, int val)
@@ -15,14 +28,21 @@ stack_node *stack_push(stack *stack, int val)
     return NULL;
   }
 
-  // create the new node
   stack_node *new_node = calloc(1, sizeof(stack_node));
-  // set the previous top of the stack to be the next node of the new top
-  new_node->next = stack->head;
+  
   new_node->value = val;
-  // Add our new node to the top of the stack
-  stack->head = new_node;
+  if (stack->top + 1 < stack->capacity)
+  {
+  (stack->head)[stack->top] = new_node;
+  stack->top = 1 + stack->top;
   return new_node;
+  }
+  else
+  {
+    stack = stack_increase(stack);
+    return stack_push(stack, val);
+  }
+  
 }
 
 int stack_pop(stack *stack)
@@ -37,10 +57,8 @@ int stack_pop(stack *stack)
     fprintf(stderr, "Tried to pop from an empty stack\n");
     exit(1);
   }
-  int val = stack->head->value;
-  stack_node *old = stack->head;
-  stack->head = stack->head->next;
-  free(old);
+  int val = ((stack->head)[stack->top])->value;
+  stack->top = (stack->top) - 1;
   return val;
 }
 
@@ -56,7 +74,7 @@ int stack_peek(stack *stack)
     fprintf(stderr, "Tried to read an empty stack\n");
     exit(1);
   }
-  return stack->head->value;
+  return stack->head[stack->top]->value;
 }
 
 void stack_free(stack *stack)
@@ -66,15 +84,7 @@ void stack_free(stack *stack)
     return;
   }
 
-  stack_node *to_free = stack->head;
-  do
-  {
-    if (to_free == NULL)
-      return;
-    stack_node *next_free = to_free->next;
-
-    free(to_free);
-    to_free = next_free;
-  } while (to_free != NULL);
-  free(stack);
+ free(stack->head);
+ free(stack);
+ return 0;
 }
