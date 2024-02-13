@@ -223,9 +223,10 @@ int main(void)
     FILE *too_little_space = fopen("scanfile_too_little_whitespace", "r");
     result = calloc(1, sizeof(instruction));
     matches = scan_file(too_little_space, result);
-    if (matches != -1)
+    if (matches < 1)
     {
-        printf("scan_file() test: Failed too little whitespace.\nscan_file returned %d, should have returned -1\n", matches);
+        printf("scan_file() test: Failed too little whitespace.\nscan_file returned %d, should have returned at least 1\n", matches);
+        printf("%s, %d\n", result->command, result->arg);
         free(result);
         return 0;
     }
