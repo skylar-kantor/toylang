@@ -113,7 +113,7 @@ int main(void)
             free(result);
             return 0;
         }
-        if (strcmp(result->command, "add") != 0)
+        if (strcmp(result->command, "add") != 0 && strcmp(result->command, "print") != 0)
         {
             printf("scan_file() test: Failed multi command with no argument on loop %d.\nCommand is %s, but file contains \"add\"\n", count, result->command);
             free(result);

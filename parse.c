@@ -6,7 +6,7 @@ int scan_file(FILE *in_file, instruction *out_instr)
   char cmd[7];
   int arg;
   char extra[10];
-  int scan_matches = fscanf(in_file, "%6s %d%s", cmd, &arg, extra);
+  int scan_matches = fscanf(in_file, "%6s %d", cmd, &arg);
   if (scan_matches == 1)
   {
     read_instruction.arg = -1;
@@ -17,7 +17,6 @@ int scan_file(FILE *in_file, instruction *out_instr)
   }
   if (scan_matches < 1 || strcmp(extra, "") != 0)
   {
-
     instruction error_instruction;
     strcpy(error_instruction.command, "-1");
     error_instruction.arg = -1;
@@ -32,6 +31,7 @@ int scan_file(FILE *in_file, instruction *out_instr)
 
 int parse_command(char *cmd)
 {
+  
   if (strcmp(cmd, "push") == 0)
   {
     return 0;
