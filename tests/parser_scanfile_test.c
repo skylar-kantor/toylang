@@ -182,9 +182,9 @@ int main(void)
     FILE *cmd_too_short = fopen("scanfile_too_short", "r");
     result = calloc(1, sizeof(instruction));
     matches = scan_file(cmd_too_short, result);
-    if (matches != -1)
+    if (matches != 1)
     {
-        printf("scan_file() test: Failed command too short.\nscan_file returned %d, should have returned -1\n", matches);
+        printf("scan_file() test: Failed command too short.\nscan_file returned %d, should have returned 1\n", matches);
         free(result);
         return 0;
     }
@@ -198,19 +198,20 @@ int main(void)
     printf("Passed cmd_too_short\n");
 
     // Too much whitespace
+    // Since fscanf ignores multiple whitespace characters, this shouldn't be different from a correctly formatted command 
     printf("Testing too_much_whitespace\n");
     FILE *too_much_space = fopen("scanfile_too_much_whitespace", "r");
     result = calloc(1, sizeof(instruction));
     matches = scan_file(too_much_space, result);
-    if (matches != -1)
+    if (matches != 2)
     {
-        printf("scan_file() test: Failed too much whitespace.\nscan_file returned %d, should have returned -1\n", matches);
+        printf("scan_file() test: Failed too much whitespace.\nscan_file returned %d, should have returned 2\n", matches);
         free(result);
         return 0;
     }
-    if (result->arg != -1)
+    if (result->arg != 5)
     {
-        printf("scan_file() test: Failed too much whitespace.\nArgument is %d, but should be -1\n", result->arg);
+        printf("scan_file() test: Failed too much whitespace.\nArgument is %d, but should be 5\n", result->arg);
         free(result);
         return 0;
     }
