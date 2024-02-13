@@ -10,12 +10,16 @@ int scan_file(FILE *in_file, instruction *out_instr)
   {
     read_instruction.arg = -1;
   }
+  else
+  {
+    read_instruction.arg = arg;
+  }
   if (scan_matches < 1)
   {
     instruction error_instruction = {.command = -1, .arg = -1};
     *out_instr = error_instruction;
   }
-  read_instruction.arg = arg;
+
   strcpy(read_instruction.command, cmd);
   *out_instr = read_instruction;
   return scan_matches;
