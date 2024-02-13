@@ -80,6 +80,20 @@ int main(void)
     {
         instruction *result = malloc(sizeof(instruction));
         int matches = scan_file(multiple_good_cmd_noarg, result);
+        if (matches == -1)
+        {
+            if (count <= FILE_LEN)
+            {
+                printf("scan_file() test: Failed multi command with no argument on loop %d. scan_file returned EOF before line %d\n", count, FILE_LEN);
+                free(result);
+                return 0;
+            }
+            else
+            {
+                break;
+            }
+        }
+        
         if (matches != 1 && matches != -1)
         {
             printf("scan_file() test: Failed multi command with no argument on loop %d.\nscan_file returned %d, should have returned 1\n", count, matches);
@@ -99,19 +113,7 @@ int main(void)
             return 0;
         }
 
-        if (matches == -1)
-        {
-            if (count < FILE_LEN)
-            {
-                printf("scan_file() test: Failed multi command with no argument on loop %d. scan_file returned EOF before line %d\n", count, FILE_LEN);
-                free(result);
-                return 0;
-            }
-            else
-            {
-                break;
-            }
-        }
+        
 
         count++;
     }
