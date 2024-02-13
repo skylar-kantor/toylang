@@ -1,5 +1,5 @@
 #include "parse.h"
-#define TEST 10
+//#define TEST 0
 int scan_file(FILE *in_file, instruction *out_instr)
 {
   instruction read_instruction;
