@@ -23,15 +23,19 @@ int main(int argc, char *argv[])
     scan_matches = scan_file(input_file, read_instruction);
     if (scan_matches == EOF)
     {
+      free(read_instruction);
       break;
     }
     int command = parse_command(read_instruction->command);
     int argument = read_instruction->arg;
+    free(read_instruction);
     // TODO make this argument a context struct?
     execute_command(command, argument, stack, input_file);
     instruction_pointer++;
+    
   }
   fclose(input_file);
+  
   printf("=========FINAL STACK VALUE==============\n");
   stack_node *head = stack->head;
   while (head != NULL)
@@ -42,5 +46,6 @@ int main(int argc, char *argv[])
   }
   printf("\n");
   stack_free(stack);
+  free(head);
   return 0;
 }

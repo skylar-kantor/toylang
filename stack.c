@@ -70,7 +70,10 @@ void stack_free(stack *stack)
   do
   {
     if (to_free == NULL)
+    {
+      free(stack);
       return;
+    }
     stack_node *next_free = to_free->next;
 
     free(to_free);
