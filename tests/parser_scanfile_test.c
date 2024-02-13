@@ -237,16 +237,17 @@ int main(void)
         return 0;
     }
     free(result);
-    printf("Testing too_little_whitespace\n");
+    printf("Passed too_little_whitespace\n");
 
     // Too many arguments
     printf("Testing too_many_args\n");
-    FILE *too_many_args = fopen("scanfile_too_,many_args", "r");
+    FILE *too_many_args = fopen("scanfile_too_many_args", "r");
     result = calloc(1, sizeof(instruction));
     matches = scan_file(too_many_args, result);
     if (matches != -1)
     {
         printf("scan_file() test: Failed too many arguments.\nscan_file returned %d, should have returned -1\n", matches);
+        printf("%s, %d\n", result->command, result->arg);
         free(result);
         return 0;
     }
