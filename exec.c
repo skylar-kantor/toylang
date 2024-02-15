@@ -1,53 +1,63 @@
 #include "exec.h"
-void add(stack *stack)
+int add(stack *stack)
 {
   stack_push(stack, stack_pop(stack) + stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void and (stack * stack)
+int and (stack * stack)
 {
   stack_push(stack, stack_pop(stack) & stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void or (stack * stack)
+int or (stack * stack)
 {
   stack_push(stack, stack_pop(stack) | stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void xor (stack * stack) {
+int xor (stack * stack) {
   stack_push(stack, stack_pop(stack) ^ stack_pop(stack));
+  return stack_peek(stack);
 }
 
-    void ls(stack *stack)
+    int ls(stack *stack)
 {
   stack_push(stack, stack_pop(stack) << stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void rs(stack *stack)
+int rs(stack *stack)
 {
   stack_push(stack, stack_pop(stack) >> stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void nand(stack *stack)
+int nand(stack *stack)
 {
   and(stack);
   stack_push(stack, ~stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void nor(stack *stack)
+int nor(stack *stack)
 {
   or (stack);
   stack_push(stack, ~stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void dup(stack *stack)
+int dup(stack *stack)
 {
   stack_push(stack, stack_peek(stack));
+  return stack_peek(stack);
 }
 
 void stack_print(stack *stack)
 {
   printf("%d\n", stack_peek(stack));
+  return stack_peek(stack);
 }
 
 void jump(stack *stack, FILE *input_file)
@@ -64,16 +74,14 @@ void jump(stack *stack, FILE *input_file)
 
 void ifeq(stack *stack, FILE *input_file)
 {
-
   if (stack_pop(stack) == stack_pop(stack))
   {
     jump(stack, input_file);
   }
 }
 
-void execute_command(int command, int argument, stack *stack, FILE *input_file)
+int execute_command(int command, int argument, stack *stack, FILE *input_file)
 {
-
   switch (command)
   {
   case 0:
@@ -121,4 +129,5 @@ void execute_command(int command, int argument, stack *stack, FILE *input_file)
   default:
     break;
   }
+  return command;
 }
