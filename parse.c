@@ -5,7 +5,7 @@ int scan_file(FILE *in_file, instruction *out_instr)
   instruction read_instruction;
   char cmd[7];
   int arg;
-  char extra[10];
+  char extra[10] = "";
   int scan_matches = fscanf(in_file, "%6s %d", cmd, &arg);
   if (scan_matches == 1)
   {

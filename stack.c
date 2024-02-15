@@ -35,6 +35,7 @@ int stack_pop(Stack *stack)
   if (stack->head == NULL)
   {
     fprintf(stderr, "Tried to pop from an empty stack\n");
+    stack_free(stack);
     exit(1);
   }
   int val = stack->head->value;
@@ -54,6 +55,7 @@ int stack_peek(Stack *stack)
   if (stack->head == NULL)
   {
     fprintf(stderr, "Tried to read an empty stack\n");
+    stack_free(stack);
     exit(1);
   }
   return stack->head->value;
