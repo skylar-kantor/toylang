@@ -7,7 +7,7 @@ int main(void)
     {
         for (int j = 0; j < 10000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = add(test_stack);
@@ -27,7 +27,7 @@ int main(void)
     {
         for (int j = 0; j < 10000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = and(test_stack);
@@ -48,7 +48,7 @@ int main(void)
     {
         for (int j = 0; j < 10000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = nand(test_stack);
@@ -69,7 +69,7 @@ int main(void)
     {
         for (int j = 0; j < 10000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = or (test_stack);
@@ -90,7 +90,7 @@ int main(void)
     {
         for (int j = 0; j < 10000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = nor(test_stack);
@@ -111,7 +111,7 @@ int main(void)
     {
         for (int j = 0; j < 10000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = xor(test_stack);
@@ -132,7 +132,7 @@ int main(void)
     {
         for (int j = 0; j < 10000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = ls(test_stack);
@@ -153,7 +153,7 @@ int main(void)
     {
         for (int j = 0; j < 1000; j++)
         {
-            stack *test_stack = stack_init();
+            Stack *test_stack = stack_init();
             stack_push(test_stack, i);
             stack_push(test_stack, j);
             int result = rs(test_stack);

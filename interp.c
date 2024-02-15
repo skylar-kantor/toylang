@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
   }
   int scan_matches = 0;
   int instruction_pointer = 0;
-  stack *stack = stack_init();
+  Stack *stack = stack_init();
   while (1)
   {
     instruction *read_instruction = malloc(sizeof(instruction));

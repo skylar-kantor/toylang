@@ -1,13 +1,13 @@
 #include "stack.h"
 
-stack *stack_init(void)
+Stack *stack_init(void)
 {
-  stack *stack = calloc(1, sizeof(stack));
+  Stack *stack = calloc(1, sizeof(*stack));
   stack->head = NULL;
   return stack;
 }
 
-stack_node *stack_push(stack *stack, int val)
+stack_node *stack_push(Stack *stack, int val)
 {
   if (stack == NULL)
   {
@@ -25,7 +25,7 @@ stack_node *stack_push(stack *stack, int val)
   return new_node;
 }
 
-int stack_pop(stack *stack)
+int stack_pop(Stack *stack)
 {
   if (stack == NULL)
   {
@@ -44,7 +44,7 @@ int stack_pop(stack *stack)
   return val;
 }
 
-int stack_peek(stack *stack)
+int stack_peek(Stack *stack)
 {
   if (stack == NULL)
   {
@@ -59,7 +59,7 @@ int stack_peek(stack *stack)
   return stack->head->value;
 }
 
-void stack_free(stack *stack)
+void stack_free(Stack *stack)
 {
   if (stack == NULL)
   {

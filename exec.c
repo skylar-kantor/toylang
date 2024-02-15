@@ -1,64 +1,64 @@
 #include "exec.h"
-int add(stack *stack)
+int add(Stack *stack)
 {
   stack_push(stack, stack_pop(stack) + stack_pop(stack));
   return stack_peek(stack);
 }
 
-int and (stack * stack)
+int and (Stack * stack)
 {
   stack_push(stack, stack_pop(stack) & stack_pop(stack));
   return stack_peek(stack);
 }
 
-int or (stack * stack)
+int or (Stack * stack)
 {
   stack_push(stack, stack_pop(stack) | stack_pop(stack));
   return stack_peek(stack);
 }
 
-int xor (stack * stack) {
+int xor (Stack * stack) {
   stack_push(stack, stack_pop(stack) ^ stack_pop(stack));
   return stack_peek(stack);
 }
 
-    int ls(stack *stack)
+    int ls(Stack *stack)
 {
   stack_push(stack, stack_pop(stack) << stack_pop(stack));
   return stack_peek(stack);
 }
 
-int rs(stack *stack)
+int rs(Stack *stack)
 {
   stack_push(stack, stack_pop(stack) >> stack_pop(stack));
   return stack_peek(stack);
 }
 
-int nand(stack *stack)
+int nand(Stack *stack)
 {
   and(stack);
   stack_push(stack, ~stack_pop(stack));
   return stack_peek(stack);
 }
 
-int nor(stack *stack)
+int nor(Stack *stack)
 {
   or (stack);
   stack_push(stack, ~stack_pop(stack));
   return stack_peek(stack);
 }
 
-void dup(stack *stack)
+void dup(Stack *stack)
 {
   stack_push(stack, stack_peek(stack));
 }
 
-void stack_print(stack *stack)
+void stack_print(Stack *stack)
 {
   printf("%d\n", stack_peek(stack));
 }
 
-void jump(stack *stack, FILE *input_file)
+void jump(Stack *stack, FILE *input_file)
 {
   int current_instruction = 0;
   int jump_location = stack_pop(stack);
@@ -70,7 +70,7 @@ void jump(stack *stack, FILE *input_file)
   }
 }
 
-void ifeq(stack *stack, FILE *input_file)
+void ifeq(Stack *stack, FILE *input_file)
 {
   if (stack_pop(stack) == stack_pop(stack))
   {
@@ -78,7 +78,7 @@ void ifeq(stack *stack, FILE *input_file)
   }
 }
 
-void execute_command(int command, int argument, stack *stack, FILE *input_file)
+void execute_command(int command, int argument, Stack *stack, FILE *input_file)
 {
   switch (command)
   {
