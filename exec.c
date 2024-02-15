@@ -48,16 +48,14 @@ int nor(stack *stack)
   return stack_peek(stack);
 }
 
-int dup(stack *stack)
+void dup(stack *stack)
 {
   stack_push(stack, stack_peek(stack));
-  return stack_peek(stack);
 }
 
 void stack_print(stack *stack)
 {
   printf("%d\n", stack_peek(stack));
-  return stack_peek(stack);
 }
 
 void jump(stack *stack, FILE *input_file)
@@ -80,7 +78,7 @@ void ifeq(stack *stack, FILE *input_file)
   }
 }
 
-int execute_command(int command, int argument, stack *stack, FILE *input_file)
+void execute_command(int command, int argument, stack *stack, FILE *input_file)
 {
   switch (command)
   {
@@ -129,5 +127,4 @@ int execute_command(int command, int argument, stack *stack, FILE *input_file)
   default:
     break;
   }
-  return command;
 }
