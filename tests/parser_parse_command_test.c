@@ -3,6 +3,7 @@
 
 int main(void)
 {
+    printf("=====================\n=====================\nTesting parse_command\n=====================\n=====================\n");
     char *test_valid_commands[14] = {"push", "pop", "add", "ifeq", "jump", "print", "dup", "and", "nand", "or", "nor", "xor", "ls", "rs"};
     printf("Testing valid_commands\n");
     for (int i = 0; i < 14; i++)
@@ -28,5 +29,6 @@ int main(void)
         }
     }
     printf("Passed invalid_commands\n");
+     printf("=====================\n=====================\nPassed parse_command\n=====================\n=====================\n");
     return 0;
 }
