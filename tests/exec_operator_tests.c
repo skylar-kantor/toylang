@@ -3,9 +3,9 @@
 int main(void)
 {
     printf("testing add\n");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        for (int j = 0; j < 1000; j++)
+        for (int j = 0; j < 10000; j++)
         {
             stack *test_stack = stack_init();
             stack_push(test_stack, i);
@@ -23,9 +23,9 @@ int main(void)
     printf("passed add\n");
 
     printf("testing and\n");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        for (int j = 0; j < 1000; j++)
+        for (int j = 0; j < 10000; j++)
         {
             stack *test_stack = stack_init();
             stack_push(test_stack, i);
@@ -44,9 +44,9 @@ int main(void)
     printf("passed and\n");
 
     printf("testing nand\n");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        for (int j = 0; j < 1000; j++)
+        for (int j = 0; j < 10000; j++)
         {
             stack *test_stack = stack_init();
             stack_push(test_stack, i);
@@ -65,9 +65,9 @@ int main(void)
     printf("passed nand\n");
 
     printf("testing or\n");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        for (int j = 0; j < 1000; j++)
+        for (int j = 0; j < 10000; j++)
         {
             stack *test_stack = stack_init();
             stack_push(test_stack, i);
@@ -86,9 +86,9 @@ int main(void)
     printf("passed or\n");
 
     printf("testing nor\n");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        for (int j = 0; j < 1000; j++)
+        for (int j = 0; j < 10000; j++)
         {
             stack *test_stack = stack_init();
             stack_push(test_stack, i);
@@ -107,9 +107,9 @@ int main(void)
     printf("passed nor\n");
 
     printf("testing xor\n");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        for (int j = 0; j < 1000; j++)
+        for (int j = 0; j < 10000; j++)
         {
             stack *test_stack = stack_init();
             stack_push(test_stack, i);
@@ -128,9 +128,9 @@ int main(void)
     printf("passed xor\n");
 
     printf("testing ls\n");
-    for (int i = 0; i < 1000; i++)
+    for (int i = 0; i < 10000; i++)
     {
-        for (int j = 0; j < 1000; j++)
+        for (int j = 0; j < 10000; j++)
         {
             stack *test_stack = stack_init();
             stack_push(test_stack, i);
