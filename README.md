@@ -19,10 +19,11 @@ Currently, I've defined everything exactly as the SO answer specifies (I think, 
 - xor: Bitwise XOR the top 2 values of the stack
 - ls: Top of the stack shifted left by the second number in the stack
 - rs: Top of the stack shifted right by the second number in the stack
+- if: Pops the top two values off the stack. Pushes 1 if they are equal and 0 otherwise 
 ## Behavior
 Each command is specified in two parts, separated by a space. The command, and its argument, with the exception of pop and print.
 Each command/argument pair is separated by a newline.
 
 ## To Do
 - ~~Jump and ifeq should probably be able to go backwards~~ (Done 1/10/2024)
-- add an "if" word that pushes 1 to the stack if top == arg and 0 otherwise
+- ~~add an "if" word that pushes 1 to the stack if top two values are equal and 0 otherwise~~ (done 03/14/2024)
