@@ -1,56 +1,64 @@
 #include "exec.h"
-void add(stack *stack)
+int add(Stack *stack)
 {
   stack_push(stack, stack_pop(stack) + stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void and (stack * stack)
+int and (Stack * stack)
 {
   stack_push(stack, stack_pop(stack) & stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void or (stack * stack)
+int or (Stack * stack)
 {
   stack_push(stack, stack_pop(stack) | stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void xor (stack * stack) {
+int xor (Stack * stack) {
   stack_push(stack, stack_pop(stack) ^ stack_pop(stack));
+  return stack_peek(stack);
 }
 
-    void ls(stack *stack)
+    int ls(Stack *stack)
 {
   stack_push(stack, stack_pop(stack) << stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void rs(stack *stack)
+int rs(Stack *stack)
 {
   stack_push(stack, stack_pop(stack) >> stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void nand(stack *stack)
+int nand(Stack *stack)
 {
   and(stack);
   stack_push(stack, ~stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void nor(stack *stack)
+int nor(Stack *stack)
 {
   or (stack);
   stack_push(stack, ~stack_pop(stack));
+  return stack_peek(stack);
 }
 
-void dup(stack *stack)
+void dup(Stack *stack)
 {
   stack_push(stack, stack_peek(stack));
 }
 
-void stack_print(stack *stack)
+void stack_print(Stack *stack)
 {
   printf("%d\n", stack_peek(stack));
 }
 
-void jump(stack *stack, FILE *input_file)
+void jump(Stack *stack, FILE *input_file)
 {
   int current_instruction = 0;
   int jump_location = stack_pop(stack);
@@ -62,16 +70,34 @@ void jump(stack *stack, FILE *input_file)
   }
 }
 
-void ifeq(stack *stack, FILE *input_file)
+void do_if(Stack *stack)
 {
+  if(stack_pop(stack) == stack_pop(stack))
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack, 0);
+  }
+}
 
+void ifeq(Stack *stack, FILE *input_file)
+{
   if (stack_pop(stack) == stack_pop(stack))
   {
     jump(stack, input_file);
   }
 }
 
-void t_if(stack *stack)
+
+void new_func(char *name, char *def)
+{
+  
+}
+
+
+void do_if(stack *stack)
 {
  int operand = stack_pop(stack);
  int v1 = stack_pop(stack);
@@ -139,9 +165,13 @@ void t_if(stack *stack)
  }
 }
 
-void execute_command(int command, int argument, stack *stack, FILE *input_file)
+void call_func(char **args)
 {
+  
+}
 
+void execute_command(int command, int argument, Stack *stack, FILE *input_file)
+{
   switch (command)
   {
   case 0:
@@ -187,7 +217,10 @@ void execute_command(int command, int argument, stack *stack, FILE *input_file)
     rs(stack);
     break;
   case 14:
-    t_if(stack);
+    do_if(stack);
+    break;
+  case 15: 
+    new_func();
     break;
   default:
     break;

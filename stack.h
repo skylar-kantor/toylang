@@ -7,13 +7,13 @@ typedef struct stack_node
   struct stack_node *next;
 } stack_node;
 
-typedef struct stack
+typedef struct Stack
 {
   stack_node *head;
-} stack;
+} Stack;
 
-stack *stack_init();
-stack_node *stack_push(stack *stack, int val);
-int stack_pop(stack *stack);
-int stack_peek(stack *stack);
-void stack_free(stack *stack);
+Stack *stack_init(void);
+stack_node *stack_push(Stack *stack, int val);
+int stack_pop(Stack *stack);
+int stack_peek(Stack *stack);
+void stack_free(Stack *stack);

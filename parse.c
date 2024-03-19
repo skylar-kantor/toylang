@@ -1,28 +1,42 @@
 #include "parse.h"
-
+//#define TEST 0
 int scan_file(FILE *in_file, instruction *out_instr)
 {
   instruction read_instruction;
   char cmd[7];
   int arg;
+  char extra[10] = "";
   int scan_matches = fscanf(in_file, "%6s %d", cmd, &arg);
   if (scan_matches == 1)
   {
     read_instruction.arg = -1;
   }
-  if (scan_matches < 1)
+  else
   {
-    instruction error_instruction = {.command = -1, .arg = -1};
-    *out_instr = error_instruction;
+    read_instruction.arg = arg;
   }
-  read_instruction.arg = arg;
+  if (scan_matches < 1 || strcmp(extra, "") != 0)
+  {
+    instruction error_instruction;
+    strcpy(error_instruction.command, "-1");
+    error_instruction.arg = -1;
+    *out_instr = error_instruction;
+    return -1;
+  }
+
   strcpy(read_instruction.command, cmd);
   *out_instr = read_instruction;
   return scan_matches;
 }
 
+void scan_func(char *function)
+{
+  
+}
+
 int parse_command(char *cmd)
 {
+  
   if (strcmp(cmd, "push") == 0)
   {
     return 0;
@@ -79,13 +93,16 @@ int parse_command(char *cmd)
   {
     return 13;
   }
-  else if (strcmp(cmd, "if") == 0)
+
+  else if(strcmp(cmd, "if") == 0)
   {
     return 14;
   }
   else
   {
+    #ifndef TEST
     fprintf(stderr, "ERROR: \"%s\", ", cmd);
+    #endif
     return -1;
   }
 }

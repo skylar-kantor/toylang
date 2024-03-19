@@ -1,13 +1,12 @@
 #include "stack.h"
-#include <stdlib.h>
-stack *stack_init()
-{
-   struct stack *st = malloc(sizeof(*st));
-  st->head = NULL;
-  return st;
-}
 
-stack_node *stack_push(stack *stack, int val)
+Stack *stack_init(void)
+{
+  Stack *stack = calloc(1, sizeof(*stack));
+  stack->head = NULL;
+  return stack;
+}
+stack_node *stack_push(Stack *stack, int val)
 {
   if (stack == NULL)
   {
@@ -16,7 +15,7 @@ stack_node *stack_push(stack *stack, int val)
   }
 
   // create the new node
-  struct stack_node *new_node = calloc(1, sizeof(stack_node));
+  stack_node *new_node = calloc(1, sizeof(stack_node));
   // set the previous top of the stack to be the next node of the new top
   new_node->next = stack->head;
   new_node->value = val;
@@ -25,7 +24,7 @@ stack_node *stack_push(stack *stack, int val)
   return new_node;
 }
 
-int stack_pop(stack *stack)
+int stack_pop(Stack *stack)
 {
   if (stack == NULL)
   {
@@ -35,6 +34,7 @@ int stack_pop(stack *stack)
   if (stack->head == NULL)
   {
     fprintf(stderr, "Tried to pop from an empty stack\n");
+    stack_free(stack);
     exit(1);
   }
   int val = stack->head->value;
@@ -44,7 +44,7 @@ int stack_pop(stack *stack)
   return val;
 }
 
-int stack_peek(stack *stack)
+int stack_peek(Stack *stack)
 {
   if (stack == NULL)
   {
@@ -54,12 +54,13 @@ int stack_peek(stack *stack)
   if (stack->head == NULL)
   {
     fprintf(stderr, "Tried to read an empty stack\n");
+    stack_free(stack);
     exit(1);
   }
   return stack->head->value;
 }
 
-void stack_free(stack *stack)
+void stack_free(Stack *stack)
 {
   if (stack == NULL)
   {
@@ -70,7 +71,10 @@ void stack_free(stack *stack)
   do
   {
     if (to_free == NULL)
+    {
+      free(stack);
       return;
+    }
     stack_node *next_free = to_free->next;
 
     free(to_free);

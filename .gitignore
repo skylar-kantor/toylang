@@ -56,4 +56,10 @@ source.ps
 .vscode/launch.json
 .vscode/tasks.json
 test
+interp
+vgcore.25055
 toylang
+tests/op_tests
+toylang_test
+vgcore.51576
+vgcore.51780
