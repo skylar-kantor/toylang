@@ -90,6 +90,16 @@ void ifeq(Stack *stack, FILE *input_file)
   }
 }
 
+void new_func(char *name, char *def)
+{
+  
+}
+
+void call_func(char **args)
+{
+  
+}
+
 void execute_command(int command, int argument, Stack *stack, FILE *input_file)
 {
   switch (command)
@@ -138,6 +148,9 @@ void execute_command(int command, int argument, Stack *stack, FILE *input_file)
     break;
   case 14:
     do_if(stack);
+    break;
+  case 15: 
+    new_func();
     break;
   default:
     break;

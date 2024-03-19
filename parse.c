@@ -29,6 +29,11 @@ int scan_file(FILE *in_file, instruction *out_instr)
   return scan_matches;
 }
 
+void scan_func(char *function)
+{
+  
+}
+
 int parse_command(char *cmd)
 {
   

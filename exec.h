@@ -1,5 +1,6 @@
 #include "stack.h"
 #include <stdio.h>
+#include <search.h>
 
 int add(Stack *stack);
 int and (Stack * stack);
