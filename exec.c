@@ -70,18 +70,6 @@ void jump(Stack *stack, FILE *input_file)
   }
 }
 
-void do_if(Stack *stack)
-{
-  if(stack_pop(stack) == stack_pop(stack))
-  {
-    stack_push(stack, 1);
-  }
-  else
-  {
-    stack_push(stack, 0);
-  }
-}
-
 void ifeq(Stack *stack, FILE *input_file)
 {
   if (stack_pop(stack) == stack_pop(stack))
@@ -97,7 +85,7 @@ void new_func(char *name, char *def)
 }
 
 
-void do_if(stack *stack)
+void do_if(Stack *stack)
 {
  int operand = stack_pop(stack);
  int v1 = stack_pop(stack);
@@ -220,7 +208,7 @@ void execute_command(int command, int argument, Stack *stack, FILE *input_file)
     do_if(stack);
     break;
   case 15: 
-    new_func();
+    new_func("", "");
     break;
   default:
     break;
