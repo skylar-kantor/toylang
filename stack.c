@@ -6,7 +6,6 @@ Stack *stack_init(void)
   stack->head = NULL;
   return stack;
 }
-
 stack_node *stack_push(Stack *stack, int val)
 {
   if (stack == NULL)

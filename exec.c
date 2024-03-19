@@ -90,9 +90,79 @@ void ifeq(Stack *stack, FILE *input_file)
   }
 }
 
+
 void new_func(char *name, char *def)
 {
   
+}
+
+
+void do_if(stack *stack)
+{
+ int operand = stack_pop(stack);
+ int v1 = stack_pop(stack);
+ int v2 = stack_pop(stack);
+
+ switch (operand)
+ {
+ case 0:
+  if(v1 == v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+  case 1:
+  if(v1 < v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+   case 2:
+  if(v1 > v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+   case 3:
+  if(v1 <= v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+
+   case 4:
+  if(v1 >= v2)
+  {
+    stack_push(stack, 1);
+  }
+  else
+  {
+    stack_push(stack,0);
+  }
+  break;
+ 
+ default:
+  break;
+ }
 }
 
 void call_func(char **args)
