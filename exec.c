@@ -70,6 +70,16 @@ void jump(Stack *stack, FILE *input_file)
   }
 }
 
+void new_func(char *name, char *def)
+{
+  
+}
+
+void call_func(char **args)
+{
+  
+}
+
 void ifeq(Stack *stack, FILE *input_file)
 {
   if (stack_pop(stack) == stack_pop(stack))
@@ -77,13 +87,6 @@ void ifeq(Stack *stack, FILE *input_file)
     jump(stack, input_file);
   }
 }
-
-
-void new_func(char *name, char *def)
-{
-  
-}
-
 
 void do_if(Stack *stack)
 {
@@ -151,11 +154,6 @@ void do_if(Stack *stack)
  default:
   break;
  }
-}
-
-void call_func(char **args)
-{
-  
 }
 
 void execute_command(int command, int argument, Stack *stack, FILE *input_file)
